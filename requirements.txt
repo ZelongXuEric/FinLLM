@@ -1,0 +1,10 @@
+pandas
+numpy
+requests
+beautifulsoup4
+python-dotenv
+yfinance
+transformers
+torch
+scikit-learn
+tqdm

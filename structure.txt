@@ -1,0 +1,22 @@
+FinLLM/
+├── .env.example           # 环境变量示例（API Key、User-Agent 等）
+├── requirements.txt       # Python 依赖列表
+├── data/                  # 各阶段数据
+│   ├── raw/               # 原始下载文件
+│   ├── interim/           # 清洗/对齐后中间文件
+│   └── processed/         # 最终用于模型或导出的数据
+├── notebooks/             # 可选：探索性分析和演示
+│   ├── 01_fetch_data.ipynb
+│   ├── 02_align_data.ipynb
+│   └── 04_benchmark.ipynb
+├── results
+├── src/                   # 可直接运行的核心脚本
+│   ├── config.py          # 读取环境变量
+│   ├── fetch_data.py      # Reuters/EDGAR/FRED 抓取逻辑
+│   ├── align_data.py      # 数据清洗与股票对齐
+│   ├── annotate.py        # 导出供人工标注的 CSV
+│   └── benchmark.py       # LLM 推理与评测逻辑
+└── scripts/               # 一行命令的封装调用
+    ├── run_fetch.sh       # 调用 fetch_data.py
+    ├── run_align.sh       # 调用 align_data.py
+    └── run_benchmark.sh   # 调用 benchmark.py
