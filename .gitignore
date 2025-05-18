@@ -4,6 +4,7 @@ New-Item -Name .gitignore -ItemType File -Force
 .env
 *.tmp
 *.log
+*.egg-info/
 
 models/
 notebooks/

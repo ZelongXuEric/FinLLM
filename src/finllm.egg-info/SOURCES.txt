@@ -1,5 +1,0 @@
-setup.py
-src/finllm.egg-info/PKG-INFO
-src/finllm.egg-info/SOURCES.txt
-src/finllm.egg-info/dependency_links.txt
-src/finllm.egg-info/top_level.txt
