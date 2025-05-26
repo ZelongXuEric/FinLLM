@@ -31,6 +31,26 @@ KEY_ASSOC  = "assoc_llm_pred"
 KEY_CAUSE  = "cause_llm_pred"
 KEY_EFFECT = "effect_llm_pred"
 
+ANNOTATED_CSV = Path(BASE) / "data" / "interim" / "annotated.csv"
+BENCH_JSONL   = PROC_DIR / "benchmark.jsonl"
+
+def convert_csv_to_jsonl(csv_path: str, jsonl_path: str, field_map: dict):
+    df = pd.read_csv(csv_path)
+    with open(jsonl_path, "w", encoding="utf-8") as fout:
+        for _, row in df.iterrows():
+            record = { json_key: row[csv_col] for csv_col, json_key in field_map.items() }
+            fout.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+convert_csv_to_jsonl(
+    str(ANNOTATED_CSV),
+    str(BENCH_JSONL),
+    field_map={
+        "event":          "event_text",
+        "ground_causal":  "ground_causal",
+        "cause":          "ground_cause",
+        "effect":         "ground_effect",
+    }
+)
 
 def load_jsonl(path: Path) -> pd.DataFrame:
     if not path.exists():
